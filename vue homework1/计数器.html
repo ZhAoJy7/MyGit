@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+    input{
+        background-color: gray;
+        color: red;
+        font-size: 30px;
+    }
+    span{
+        background-color: rosybrown;
+    }
+</style>
+<script src="lib/vue.js"></script>
+</head>
+
+<body>
+   <div id="app">
+       <input type="button" class="a" value="-" @click="sub">
+       <span v-text="count"></span>
+       <input type="button" class="a" value="+" @click="add">
+       <!-- <button class="a">+</button> -->
+   </div>
+</body>
+   <script>
+       var vm=new Vue({
+           el:"#app",
+           data:{
+               count:0,
+           },
+           methods:{
+               add:function(){
+                   this.count++
+                   if(this.count>10){
+                       alert("太大了别加了")
+                       this.count=10
+                   }
+               },
+
+               sub:function(){
+                   this.count--
+                   if(this.count<0){
+                       alert("太小了别减了")
+                       this.count=0
+                   }
+               }
+           }
+       })
+   </script>
+</html>

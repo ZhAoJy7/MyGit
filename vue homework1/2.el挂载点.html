@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <script src="lib/vue.js"></script>
+</head>
+
+<body>
+   <div id="app">
+      {{message}}
+      <span>{{message}}</span>
+      <h2>{{people.name}}{{people.phone}}</h2>
+      <ul>
+         <li>{{menu[0]}}</li>
+         <li>{{menu[1]}}</li>
+         <li>{{menu[2]}}</li>
+      </ul>
+   </div>
+</body>
+   <script>
+       var vm=new Vue({
+           el:"#app",
+           data:{
+              message:"吃饭吧",
+              people:{
+                 name:"赵济扬",
+                 phone:"133",
+              },
+              menu:["鸡","鸭","鱼肉"]           },
+           methods:{
+           }
+       })
+   </script>
+</html>
