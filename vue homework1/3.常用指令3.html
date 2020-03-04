@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<script src="lib/vue.js"></script>
+</head>
+
+<body>
+   <div id="app">
+       <ul>
+           <li v-for="(i,index) in arr" >我和你天天都要做的第{{index}}件事:{{i}}</li>
+       </ul>
+       <input type="button" value="点我" @click="doIt(778)">
+       <input type="text" @keyup.enter="doIt('睡觉')">
+       <input type="text" v-model="message">
+       <input type="button" value="输出" @click="res" >
+       <h2 v-text="message"></h2>
+   </div>
+</body>
+   <script>
+       var vm=new Vue({
+           el:"#app",
+           data:{
+               arr:["吃饭","拉屎","睡觉"],
+               message:"我是牛"
+           },
+           methods:{
+               doIt:function(p1){
+                   console.log("恰");
+                   console.log(p1);
+               },
+               res:function(){
+                   console.log(this.message);
+               }
+           }
+       })
+   </script>
+</html>

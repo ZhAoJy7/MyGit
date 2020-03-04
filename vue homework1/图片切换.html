@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<script src="lib/vue.js"></script>
+</head>
+
+<body>
+   <div id="app">
+       <input type="button" @click="last" value="<" v-show="lastIsShow">
+       <img height="300px" width="500px" :src="imgSrcs[turn]" alt="展示图片">
+       <input type="button" @click="next" value=">" v-show="nextIsShow">
+   </div>
+</body>
+   <script>
+       var vm=new Vue({
+           el:"#app",
+           data:{
+               imgSrcs:[
+                   "images/slamdunk.png",
+                   "images/锄大地.png",
+                   "images/lbwnb.png",
+                   "images/小黄人.png",
+               ],
+               turn:0,
+               lastIsShow:true,
+               nextIsShow:true
+
+           },
+           methods:{
+               next:function(){
+                   this.turn++;
+                   if(this.turn>2){
+                    //    this.turn=this.turn%this.imgSrcs.length;
+                    this.nextIsShow=false;
+                   }
+               },
+               last:function(){
+                   this.turn--;
+                   if(this.turn<0){
+                    //    this.turn=this.turn%this.imgSrcs.length+this.imgSrcs.length;
+                    this.lastIsShow=false;
+                   }
+               }
+           }
+       })
+   </script>
+</html>
