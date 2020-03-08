@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<script src="lib/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    
+   <div id="app">
+       <h1>天气预报</h1>
+       <div class="input">
+        <input type="text" class="input-text" placeholder="请输入要查询的城市" v-model="city" @keyup.enter="search">
+        <input type="button" class="input-btn" value="查询" @click="search">
+       </div>
+       <div class="cityList">
+           <a href="javascript:;" @click="change('北京')">北京</a>
+           <a href="javascript:;" @click="change('南京')">南京</a>
+           <a href="javascript:;" @click="change('张家口')">张家口</a>
+       </div>
+       <div>
+           <ul>
+               <li v-for="item in forecast">{{item.date}}&&&{{item.high}}&&&{{item.low}}</li>
+           </ul>
+       </div>
+   </div>
+   <script src="./js/main.js"></script>
+</body>
+</html>

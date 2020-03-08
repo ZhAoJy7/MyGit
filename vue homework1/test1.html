@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<script src="lib/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+   <div id="app">
+       <h1>天气查询</h1>
+       <div>
+           <input type="text" v-model="cityName">
+           <input type="button" value="查询" @click="getInf(cityName)">
+       </div>
+       <div>
+           <input type="button" value="北京" @click="cityInf($event)">
+           <input type="button" value="南京" @click="cityInf($event)">
+           <input type="button" value="重庆" @click="cityInf($event)">
+       </div>
+       <!-- <ul>
+           <li v-for="item in weatherList">{{item}}</li>
+       </ul> -->
+       <p>{{weatherList}}</p>
+      
+   </div>
+</body>
+   <script>
+       var vm=new Vue({
+           el:"#app",
+           data:{
+               weatherList:"",
+               cityName:"",
+           },
+           methods:{
+               getInf:function(city){
+                   var that=this;
+                   axios.get("http://wthrcdn.etouch.cn/weather_mini?city="+that.cityName)
+                   .then(function(response){
+                       that.weatherList=response.data;
+                   },function(err){
+                       that.weatherList=err;
+                   })
+               },
+               cityInf:function(city){
+                var that=this;
+                   axios.get("http://wthrcdn.etouch.cn/weather_mini?city="+city.innerHTML)
+                   .then(function(response){
+                       that.weatherList=response.data;
+                       console.log(response.data);
+                   },function(err){
+                       that.weatherList=err;
+                   })
+                   
+               }
+           }
+       })
+   </script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<script src="lib/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+   <div id="app">
+       <div>
+           <h1>音乐播放器</h1>
+           <input v-model="music" type="text" placeholder="请输入想听的音乐" @keyup.enter="search">
+       </div>
+       <div>
+           <ul>
+               <li v-for="item in playList">
+                   <a href="javascript:;">△</a>
+                   <b>{{item.name}}</b>
+                   <span><i></i></span>
+                   </li>
+           </ul>
+       </div>
+       
+   </div>
+</body>
+<script src="./js/player.js"></script>
+</html>
