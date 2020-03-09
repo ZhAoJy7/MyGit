@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">UIControl</string>
+    <string name="btn2">第二个按钮</string>
+    <string name="btn1">第一个按钮</string>
+    <string name="textview">你好安卓</string>
+    <string name="switch1">开始</string>
+    <string name="username">请输入账号</string>
+    <string name="checkbox1">安卓</string>
+    <string name="checkbox2">ios</string>
+    <string name="radioButton2">睡觉</string>
+    <string name="radioButton3">吃饭</string>
+    <string name="radioButton">写代码</string>
+    <string name="todo">TODO</string>
+    <string name="process">process</string>
+    <string name="phoneNumber">请输入电话</string>
+    <string name="btn3">改变</string>
+</resources>
