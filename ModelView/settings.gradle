@@ -1,0 +1,2 @@
+rootProject.name='ModelView'
+include ':app'

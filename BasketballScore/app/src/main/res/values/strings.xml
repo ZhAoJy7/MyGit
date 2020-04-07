@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">BasketballScore</string>
+    <string name="scoreA">0</string>
+    <string name="scoreB">0</string>
+    <string name="add1">+1</string>
+    <string name="add2">+2</string>
+    <string name="add3">+3</string>
+    <string name="TODO">TODO</string>
+    <string name="teamA">teamA</string>
+    <string name="teamB">teamB</string>
+</resources>

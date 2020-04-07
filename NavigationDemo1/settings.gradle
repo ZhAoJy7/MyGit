@@ -1,0 +1,2 @@
+rootProject.name='NavigationDemo1'
+include ':app'

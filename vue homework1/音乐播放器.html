@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+<title>Music</title>
 <script src="lib/vue.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
@@ -17,14 +17,24 @@
        <div>
            <ul>
                <li v-for="item in playList">
-                   <a href="javascript:;">△</a>
+                   <a href="javascript:;" @click="play(item.id)">△</a>
                    <b>{{item.name}}</b>
-                   <span><i></i></span>
+                   <span v-if="item.mvid!=0"><input type="button"  @click="mvPlay(item.mvid)" value="△"></span>
                    </li>
            </ul>
+           
+               <img :src="photoUrl" alt="zhuanjifengmian">
+           
        </div>
-       
+       <audio :src="playUrl" @play="playing" @pause="pause" autoplay controls></audio>
+       <video :src="mvUrl" controls ></video>
+        <dl v-for="item in comment">
+               <dt><img :src="item.user.avatarUrl" alt="touxiang"></dt>
+               <!-- <dd>{{item.nickname}}</dd> -->
+               <dd>{{item.content}}</dd>
+        </dl>
+
    </div>
 </body>
 <script src="./js/player.js"></script>
-</html>
+</html> 

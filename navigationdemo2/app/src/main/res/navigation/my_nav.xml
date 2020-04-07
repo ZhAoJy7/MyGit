@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/主页">
+
+    <fragment
+        android:id="@+id/主页"
+        android:name="com.zjy.navigationdemo2.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_detailFragment"
+            app:destination="@id/内容" >
+            <argument
+                android:name="name"
+                android:defaultValue="chaidaa" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/内容"
+        android:name="com.zjy.navigationdemo2.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue="adachai" />
+    </fragment>
+</navigation>
