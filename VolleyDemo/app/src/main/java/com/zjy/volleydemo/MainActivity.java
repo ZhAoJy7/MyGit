@@ -1,8 +1,11 @@
 package com.zjy.volleydemo;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
@@ -15,6 +18,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
+
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG="-----zjy-----";
@@ -24,47 +34,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        final TextView textView=findViewById(R.id.textView);
-        final ImageView imageView=findViewById(R.id.imageView);
-        String url="https://cdn.pixabay.com/photo/2015/06/24/16/36/home-820389_1280.jpg";
-        RequestQueue queue= Volley.newRequestQueue(this);
-//        StringRequest stringRequest=new StringRequest(
-//                StringRequest.Method.GET,
-//                url,
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        textView.setText(response);
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        Log.e(TAG,"error:",error);
-//                    }
-//                }
-//        );
-        ImageLoader imageLoader=new ImageLoader(queue, new ImageLoader.ImageCache() {
-            @Override
-            public Bitmap getBitmap(String url) {
-                return null;
-            }
 
-            @Override
-            public void putBitmap(String url, Bitmap bitmap) {
-
-            }
-        });
-        imageLoader.get(url, new ImageLoader.ImageListener() {
-            @Override
-            public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
-                imageView.setImageBitmap(response.getBitmap());
-            }
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e(TAG,"error",error);
-            }
-        });
     }
 }
