@@ -6,6 +6,8 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import java.util.List;
+
 @Dao //database access object
 public interface UserDao {
     @Insert
@@ -17,7 +19,10 @@ public interface UserDao {
     @Delete
     void deleteWords(User user);
 
-    @Query("SELECT * FROM User WHERE id= :id AND password= :password")
-    User login(int id,String password);
+    @Query("SELECT * FROM User")
+    List<User> getAllUser();
+
+    @Query("SELECT * FROM User WHERE userName= :username AND password= :password")
+    User login(String username, String password);
 
 }

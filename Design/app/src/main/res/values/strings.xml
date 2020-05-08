@@ -1,9 +1,12 @@
 <resources>
-    <string name="app_name">MyINS</string>
+    <string name="app_name">Design</string>
     <string name="TODO">TODO</string>
     <string name="editText_email">请输入邮箱地址</string>
     <string name="editText_password">请输入密码</string>
     <string name="editText_id">请输入ID</string>
     <string name="btn_register">注册</string>
     <string name="btn_login">立刻去登录</string>
+    <string name="login">登录</string>
+    <string name="btn_regist">立刻去注册</string>
+    <string name="editText_username">请输入用户名</string>
 </resources>

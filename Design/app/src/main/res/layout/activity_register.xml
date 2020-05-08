@@ -11,7 +11,7 @@
 
 
     <EditText
-        android:id="@+id/editText_email"
+        android:id="@+id/editText_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -53,7 +53,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
     <EditText
-        android:id="@+id/editText_id"
+        android:id="@+id/editText_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -62,7 +62,7 @@
         android:layout_marginRight="32dp"
         android:background="@drawable/btn_register"
         android:ems="10"
-        android:hint="@string/editText_id"
+        android:hint="@string/editText_username"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:textColor="@android:color/background_light"
@@ -120,19 +120,19 @@
         app:layout_constraintGuide_percent="0.8" />
 
     <Button
-        android:id="@+id/button_register"
+        android:id="@+id/button_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_register"
         android:text="@string/btn_register"
         android:textColor="@android:color/background_light"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/button_toRegister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button_toRegister"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@android:color/holo_red_dark"
