@@ -1,30 +1,29 @@
 package com.zjy.design;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyFragment extends Fragment {
-
+public class HomeFragment extends Fragment {
     Context mContext;
-    RecyclerView recyclerView;
+    UserDatabase userDatabase;
+    UserDao userDao;
+    private RecyclerView recyclerView;
 
     //构造函数用于传参
-    public MyFragment(){
+    public HomeFragment(){
         super();
     }
     @Override
@@ -43,21 +42,19 @@ public class MyFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Picture picture1=new Picture("gallery",R.drawable.ic_audiotrack_black_24dp);
-        Picture picture2=new Picture("gallery",R.drawable.ic_launcher_background);
-        Picture picture3=new Picture("gallery",R.drawable.bg_register);
-        List<Picture> pictureList=new ArrayList<>();
-        pictureList.add(picture1);
-        pictureList.add(picture2);
-        pictureList.add(picture3);
-
-        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(linearLayoutManager);
-        MyAdapter myAdapter=new MyAdapter(pictureList);
-        recyclerView.setAdapter(myAdapter);
+        init();
     }
 
+    private void init(){
+        userDatabase= Room.databaseBuilder(getContext(),UserDatabase.class,"user_database").allowMainThreadQueries()
+                .build();
+        userDao=userDatabase.getUserDao();
 
-
-
+        List<User> userList;
+        userList=userDao.getAllUser();
+        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        FriendsAdapter friendsAdapter=new FriendsAdapter(userList);
+        recyclerView.setAdapter(friendsAdapter);
+    }
 }
