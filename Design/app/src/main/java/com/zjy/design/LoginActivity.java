@@ -11,14 +11,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import static java.sql.Types.NULL;
-
 public class LoginActivity extends AppCompatActivity {
 
     UserDatabase userDatabase;
     UserDao userDao;
     EditText editText_username,editText_password;
-    Button btn_login;
+    Button btn_login,btn_toRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         editText_username=findViewById(R.id.editText_username);
         editText_password=findViewById(R.id.editText_password);
         btn_login=findViewById(R.id.button_login);
+        btn_toRegister=findViewById(R.id.button_toLogin);
     }
 
     private  void initData(){
@@ -54,13 +53,20 @@ public class LoginActivity extends AppCompatActivity {
                 login(username,password);
             }
         });
+
+        btn_toRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(LoginActivity.this,RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     void login(String username,String password){
         User userLogin;
         userLogin=userDao.login(username,password);
-        Bundle bundle=new Bundle();
-        bundle.putString("username",userLogin.getUserName());
+
         if(userLogin==null){
             Toast toast=Toast.makeText(LoginActivity.this,"用户名或密码输入错误，请重新输入",Toast.LENGTH_SHORT);
             toast.show();
@@ -71,12 +77,14 @@ public class LoginActivity extends AppCompatActivity {
             toast.show();
             return;
         }
+        Bundle bundle=new Bundle();
+        bundle.putString("username",userLogin.getUserName());
         if(userLogin.isAdmin()){
             Intent intent=new Intent(LoginActivity.this,AdminActivity.class);
             intent.putExtras(bundle);
             startActivity(intent);
         }else{
-            Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+            Intent intent=new Intent(LoginActivity.this,GalleryActivity.class);
             intent.putExtras(bundle);
             startActivity(intent);
         }

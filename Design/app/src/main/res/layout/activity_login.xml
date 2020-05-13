@@ -106,13 +106,13 @@
         android:background="@drawable/btn_register"
         android:text="@string/login"
         android:textColor="@android:color/background_light"
-        app:layout_constraintBottom_toTopOf="@+id/button_toRegister"
+        app:layout_constraintBottom_toTopOf="@+id/button_toLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <Button
-        android:id="@+id/button_toRegister"
+        android:id="@+id/button_toLogin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@android:color/holo_red_dark"
