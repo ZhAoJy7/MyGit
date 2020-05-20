@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -30,8 +32,12 @@ public class GalleryActivity extends AppCompatActivity {
     ViewPager viewPager;
     private FloatingActionButton floatingActionButton;
     private BottomBar bottomBar;
-    ArrayList<Fragment> fragments;
+    static ArrayList<Fragment> fragments;
     ViewPagerAdapter viewPagerAdapter;
+    MyFragment myFragment=new MyFragment();
+    AnimalFragment animalFragment=new AnimalFragment();
+    LandFragment landFragment=new LandFragment();
+    PeopleFragment peopleFragment=new PeopleFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,21 +48,39 @@ public class GalleryActivity extends AppCompatActivity {
         viewPager=findViewById(R.id.viewPager);
         bottomBar=findViewById(R.id.bottomBar);
 
+        fragments=new ArrayList<>();
+        fragments.add(myFragment);
+        fragments.add(animalFragment);
+        fragments.add(landFragment);
+        fragments.add(peopleFragment);
+        fragments.add(new HomeFragment());
+
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelected(int tabId) {
             }
         });
+        bottomBar.setOnTabReselectListener(new OnTabReselectListener() {
+            @Override
+            public void onTabReSelected(int tabId) {
+//                switch (tabId){
+//                    case R.id.tab_gallery:
+//                        myFragment=new MyFragment();
+//                        fragments.set(0,myFragment);
+//                        viewPagerAdapter.notifyDataSetChanged();
+//                        viewPager.setAdapter(viewPagerAdapter);
+//                        viewPager.setOffscreenPageLimit(5);
+//
+//                        break;
+//
+//                }
+            }
+        });
 
-        fragments=new ArrayList<>();
-        fragments.add(new MyFragment());
-        fragments.add(new AnimalFragment());
-        fragments.add(new LandFragment());
-        fragments.add(new PeopleFragment());
-        fragments.add(new HomeFragment());
 
         viewPagerAdapter=new ViewPagerAdapter(getSupportFragmentManager(),fragments);
         viewPager.setAdapter(viewPagerAdapter);
+        viewPager.setOffscreenPageLimit(7);
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -116,35 +140,25 @@ public class GalleryActivity extends AppCompatActivity {
                 }
             }
         });
-//        recyclerView=findViewById(R.id.recyclerView);
+
         floatingActionButton=findViewById(R.id.fab);
 
-        final MediaPlayer mediaPlayer;
-        mediaPlayer=MediaPlayer.create(getApplicationContext(),R.raw.bgm);
+//        final MediaPlayer mediaPlayer;
+//        mediaPlayer=MediaPlayer.create(getApplicationContext(),R.raw.bgm);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mediaPlayer.isPlaying()){
-                    mediaPlayer.stop();
-                }else{
-                    mediaPlayer.start();
-                }
+//                if(mediaPlayer.isPlaying()){
+//                    mediaPlayer.stop();
+//                }else{
+//                    mediaPlayer.start();
+//                }
+                Intent intent=new Intent(GalleryActivity.this,SearchActivity.class);
+                startActivity(intent);
             }
         });
 
 
-//        List<Picture> pictureList=new ArrayList<>();
-//        Picture picture1=new Picture("adachai",R.drawable.ic_audiotrack_black_24dp);
-//        Picture picture2=new Picture("777",R.drawable.ic_launcher_background);
-//        pictureList.add(picture1);
-//        pictureList.add(picture2);
-//
-//        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
-//        recyclerView.setLayoutManager(linearLayoutManager);
-//
-//        MyAdapter myAdapter=new MyAdapter(pictureList);
-//
-//        recyclerView.setAdapter(myAdapter);
     }
 
 }
